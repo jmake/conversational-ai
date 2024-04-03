@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type"> 
+	<meta content="utf-8" http-equiv="encoding"> 
+	<title>GCP Function</title> 
+</head> 
+<body> 
+	<p id="p">Processing...</p> 
+
+	<script> 
+		function httpGet() 
+		{ 
+			var xmlHttp = new XMLHttpRequest(); 
+			xmlHttp.open("POST", "Your trigger URL"); 
+			xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); 
+			xmlHttp.setRequestHeader("message", "Header: This is head"); 
+			xmlHttp.onload = function () { 
+				document.getElementById("p").innerHTML=xmlHttp.responseText; 
+			}; 
+			xmlHttp.send(JSON.stringify({"Body": "This is body"})); 
+		} 
+		httpGet(); 
+	</script> 
+</body> 
+</html> 
